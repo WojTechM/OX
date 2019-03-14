@@ -37,7 +37,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.wojtechm</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>${version.plugin.maven.enforcer}</version>
                 <executions>
@@ -49,7 +49,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                <!-- helps with plugin versions, so you are more up-to-date -->
+                                    <!-- helps with plugin versions, so you are more up-to-date -->
                                     <version>${version.maven}</version>
                                 </requireMavenVersion>
                             </rules>
@@ -58,7 +58,7 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.github.wojtechm</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${version.plugin.maven.jar}</version>
                 <configuration>
@@ -70,21 +70,21 @@
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>
-                            
+                            <url>${project.url}</url>
                             <key>value</key>
                         </manifestEntries>
                     </archive>
                 </configuration>
-            </plugin>                 
+            </plugin>
             <plugin>
-                <groupId>com.github.wojtechm</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.plugin.maven.compiler}</version>
             </plugin>
             <plugin>
-                <groupId>com.github.wojtechm</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-<!-- if diff enconding than UTF8 is needed: https://maven.apache.org/plugins/maven-resources-plugin/examples/encoding.html -->
+                <!-- if diff enconding than UTF8 is needed: https://maven.apache.org/plugins/maven-resources-plugin/examples/encoding.html -->
                 <version>${version.plugin.maven.resources}</version>
             </plugin>
         </plugins>
