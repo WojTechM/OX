@@ -3,6 +3,7 @@ package com.github.wojtechm;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Random;
 import java.util.function.Predicate;
 
 /**
@@ -84,4 +85,26 @@ public class ScoreTest {
         boolean actual = predicate.test(score.compareTo(score2));
         assert actual : String.format("Compared Scores: %s and %s", score, score2);
     }
+
+    @DataProvider
+    private static Object[][] dataForIncreasePointsTest() {
+
+        Object[][] testCases = new Object[50][3];
+        Random random = new Random();
+        for (Object[] testCase : testCases) {
+            int base = random.nextInt(20000);
+            int increase = random.nextInt(10000);
+            testCase[0] = new Score(base);
+            testCase[1] = increase;
+            testCase[2] = new Score(base + increase);
+        }
+        return testCases;
+    }
+
+    @Test(dataProvider = "dataForIncreasePointsTest")
+    private void Should_ReturnNewScoreObjectWithIncreasedValue_When_CalledIncreasePoints(Score score, int increase, Score expected) {
+        Score actual = score.increasePoints(increase);
+        assert expected.equals(actual) : String.format("Increased %s by %s. Expected %s, got %s", score, increase, expected, actual);
+    }
+
 }
