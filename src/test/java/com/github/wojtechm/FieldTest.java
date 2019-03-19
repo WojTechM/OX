@@ -60,4 +60,22 @@ public class FieldTest {
         assert !field.equals(object);
     }
 
+    @DataProvider
+    private static Object[][] fieldsAndToStringsData() {
+        return new Object[][]{
+                {new Field<>('X'), "X"},
+                {new Field<>('x'), "x"},
+                {new Field<>("Test"), "Test"},
+                {new Field<>(new Field<>("field")), "field"},
+                {new Field<>(null), "null"},
+        };
+    }
+
+    @Test(dataProvider = "fieldsAndToStringsData")
+    private void Should_stringRepresentation_When_calledToStringMethod(Field field, String expected) {
+        String actual = field.toString();
+        assert expected.equals(actual) : String.format("ToString error: expected %s, got %s.", expected, actual);
+    }
+
+
 }
