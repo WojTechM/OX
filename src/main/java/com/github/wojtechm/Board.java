@@ -33,4 +33,16 @@ class Board {
     void markPoint(Point point, Field mark) {
         fields[point.x][point.y] = mark;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int y = 0; y < fields.length; y++) {
+            for (int x = 0; x < fields[y].length; x++) {
+                builder.append(fields[x][y]);
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
 }

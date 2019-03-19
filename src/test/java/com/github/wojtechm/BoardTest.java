@@ -34,7 +34,7 @@ public class BoardTest {
         Board board = new Board(fields);
         Point point = new Point(random.nextInt(width), random.nextInt(height));
         assert board.getMarkAtPoint(point) == null;
-        Field mark = new Field<>('C');
+        Field<Character> mark = new Field<>('C');
         fields[point.x][point.y] = mark;
         assert board.getMarkAtPoint(point) == mark;
     }
@@ -47,11 +47,25 @@ public class BoardTest {
         Board board = new Board(fields);
         Point point = new Point(random.nextInt(width), random.nextInt(height));
         assert board.getMarkAtPoint(point) == null;
-        Field mark = new Field<>('C');
+        Field<Character> mark = new Field<>('C');
         board.markPoint(point, mark);
         assert board.getMarkAtPoint(point) == mark;
     }
 
-
-
+    @Test
+    private void Should_ReturnStringRepresentation_When_CalledToStringMethod() {
+        Field[][] fields = new Field[3][3];
+        Board board = new Board(fields);
+        String actual = board.toString();
+        String expected = "nullnullnull\nnullnullnull\nnullnullnull\n";
+        assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
+        board.markPoint(new Point(0, 1), new Field<>("X"));
+        actual = board.toString();
+        expected = "nullnullnull\nXnullnull\nnullnullnull\n";
+        assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
+        board.markPoint(new Point(1,0), new Field<>("O"));
+        actual = board.toString();
+        expected = "nullOnull\nXnullnull\nnullnullnull\n";
+        assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
+    }
 }
