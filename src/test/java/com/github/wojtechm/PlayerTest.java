@@ -17,7 +17,7 @@ public class PlayerTest {
         assert Modifier.isFinal(field1.getModifiers()) : "'mark' variable in Point class should be declared final";
         assert Modifier.isFinal(field2.getModifiers()) : "'score' variable in Point class should be declared final";
     }
-    
+
     @Test
     private void Should_PersistSentData() {
         com.github.wojtechm.Field<String> field = new com.github.wojtechm.Field<>("f");
