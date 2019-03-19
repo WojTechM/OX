@@ -3,8 +3,13 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public class Player {
+class Player {
 
-    private Field mark;
-    private Score score;
+    final Field mark;
+    final Score score;
+
+    Player(Field mark, Score score) {
+        this.mark = mark;
+        this.score = score;
+    }
 }
