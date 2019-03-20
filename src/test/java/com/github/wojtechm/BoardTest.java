@@ -40,7 +40,7 @@ public class BoardTest {
     }
 
     @Test(invocationCount = 20)
-    private void Should_ChangeObjectInMatrix_When_CalledMarkPoint() {
+    private void Should_ChangeObjectInMatrix_When_CalledMarkPoint() throws IllegalMoveException {
         Field[][] fields = getRandomBoardFields();
         int width = fields.length;
         int height = fields[0].length;
@@ -53,19 +53,19 @@ public class BoardTest {
     }
 
     @Test
-    private void Should_ReturnStringRepresentation_When_CalledToStringMethod() {
+    private void Should_ReturnStringRepresentation_When_CalledToStringMethod() throws IllegalMoveException {
         Field[][] fields = new Field[3][3];
         Board board = new Board(fields);
         String actual = board.toString();
-        String expected = "nullnullnull\nnullnullnull\nnullnullnull\n";
+        String expected = " | | |\n------\n | | |\n------\n | | |\n------\n";
         assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
         board.markPoint(new Point(0, 1), new Field<>("X"));
         actual = board.toString();
-        expected = "nullnullnull\nXnullnull\nnullnullnull\n";
+        expected = " | | |\n------\nX| | |\n------\n | | |\n------\n";
         assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
         board.markPoint(new Point(1,0), new Field<>("O"));
         actual = board.toString();
-        expected = "nullOnull\nXnullnull\nnullnullnull\n";
+        expected = " |O| |\n------\nX| | |\n------\n | | |\n------\n";
         assert expected.equals(actual) : String.format("Expected:\n%s\nGot:\n%s", expected, actual);
     }
 }

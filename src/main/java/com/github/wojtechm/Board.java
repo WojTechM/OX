@@ -27,10 +27,16 @@ class Board {
     }
 
     Field getMarkAtPoint(Point point) {
+        if (point.x < 0 || point.x >= getWidth() || point.y < 0 || point.y >= getHeight()) {
+            return null;
+        }
         return fields[point.x][point.y];
     }
 
-    void markPoint(Point point, Field mark) {
+    void markPoint(Point point, Field mark) throws IllegalMoveException {
+        if (point.x < 0 || point.x >= getWidth() || point.y < 0 || point.y >= getHeight()) {
+            throw new IllegalMoveException();
+        }
         fields[point.x][point.y] = mark;
     }
 
@@ -39,10 +45,27 @@ class Board {
         StringBuilder builder = new StringBuilder();
         for (int y = 0; y < fields.length; y++) {
             for (int x = 0; x < fields[y].length; x++) {
-                builder.append(fields[x][y]);
+                if (fields[x][y] == null) {
+                    builder.append(" |");
+                } else {
+                    builder.append(fields[x][y]);
+                    builder.append("|");
+                }
+            }
+            builder.append("\n");
+            for (int i = 0; i < getWidth() * 2; i++) {
+                builder.append("-");
             }
             builder.append("\n");
         }
         return builder.toString();
+    }
+
+    int getWidth() {
+        return fields.length;
+    }
+
+    int getHeight() {
+        return fields[0].length;
     }
 }
