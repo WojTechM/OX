@@ -3,8 +3,21 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public class Move {
+class Move {
 
-    private Field mark;
-    private Point position;
+    private final Field mark;
+    private final Point position;
+
+    Move(Field mark, Point position) {
+        this.mark = mark;
+        this.position = position;
+    }
+
+    Field getMark() {
+        return mark;
+    }
+
+    Point getPosition() {
+        return position;
+    }
 }
