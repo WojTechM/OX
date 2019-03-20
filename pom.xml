@@ -8,7 +8,7 @@
     <artifactId>OX</artifactId>
     <version>0.1</version>
     <name>OX</name>
-    <description>#DESC</description>
+    <description>Tic-Tac-Toe game</description>
     
   
     <properties>
