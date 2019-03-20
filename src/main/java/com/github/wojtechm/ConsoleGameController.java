@@ -22,7 +22,7 @@ class ConsoleGameController extends GameController {
             turns--;
             Board board = boardCreator.createBoard();
             Game game = new Game(board, players, new GameFinishedValidator());
-            Logger.getInstance().display("New Turn! Player " + players.getCurrentPlayer().mark.toString() + " goes first!");
+            Logger.getInstance().display(String.format(Settings.getInstance().getMessage("nextMatch"), players.getCurrentPlayer().getName()));
             while (true) {
                 Point point = inputAcquirer.getPointInRange(board.getWidth(), board.getHeight());
                 Move move = new Move(players.getCurrentPlayer().mark, point);
@@ -33,9 +33,12 @@ class ConsoleGameController extends GameController {
                 } catch (GameHasEndedException e) {
                     if (e.getCurrentPlayer() != null) {
                         e.getCurrentPlayer().addPoints(3);
+                        Logger.getInstance().display(String.format(Settings.getInstance().getMessage("winningPlayer"), e.getCurrentPlayer().getName()));
                     } else {
                         players.givePoints(1);
+                        Logger.getInstance().display(Settings.getInstance().getMessage("drawMessage"));
                     }
+                    game.nextTurn();
                     break;
                 }
                 game.nextTurn();
