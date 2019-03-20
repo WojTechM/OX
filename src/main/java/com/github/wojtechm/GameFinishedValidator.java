@@ -5,11 +5,15 @@ package com.github.wojtechm;
  */
 class GameFinishedValidator {
 
+    boolean isGameOver(Board board) {
+        return board.getWidth() * board.getHeight() == board.getPlacedMarks();
+    }
+
     private enum Direction {
         TOP, DOWN, LEFT, RIGHT, TOP_LEFT, TOP_RIGHT, DOWN_LEFT, DOWN_RIGHT
     }
 
-    boolean gameHasEnded(Board board, Move move) {
+    boolean isMoveWinning(Board board, Move move) {
         int requiredInLine = Integer.parseInt(Settings.getInstance().getGameParameter("inlineMatches"));
 
         int top = getNumberOfMatchingFieldsInDirection(board, Direction.TOP, move);

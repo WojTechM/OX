@@ -3,13 +3,13 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public class Game {
+class Game {
 
     private final Board board;
     private final Players players;
     private final GameFinishedValidator validator;
 
-    public Game(Board board, Players players, GameFinishedValidator validator) {
+    Game(Board board, Players players, GameFinishedValidator validator) {
         this.board = board;
         this.players = players;
         this.validator = validator;
@@ -22,8 +22,12 @@ public class Game {
             throw new IllegalMoveException();
         }
         board.markPoint(move.getPosition(), move.getMark());
-        if (validator.gameHasEnded(board, move)) {
+        if (validator.isMoveWinning(board, move)) {
             throw new GameHasEndedException(getActivePlayer());
+        }
+
+        if (validator.isGameOver(board)) {
+            throw new GameHasEndedException(null); // No winning player - Draw
         }
 
         Logger.getInstance().display(board.toString());
