@@ -57,12 +57,12 @@ class Board {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (int y = 0; y < fields.length; y++) {
-            for (int x = 0; x < fields[y].length; x++) {
-                if (fields[x][y] == null) {
+        for (int y = 0; y < fields[0].length; y++) {
+            for (Field[] field : fields) {
+                if (field[y] == null) {
                     builder.append(" |");
                 } else {
-                    builder.append(fields[x][y]);
+                    builder.append(field[y]);
                     builder.append("|");
                 }
             }
