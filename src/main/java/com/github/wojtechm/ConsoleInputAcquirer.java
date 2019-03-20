@@ -34,4 +34,13 @@ class ConsoleInputAcquirer {
     String getStringFromUser() {
         return scanner.next();
     }
+
+    Point getPointInRange(int width, int height) {
+        Logger.getInstance().display("Type in X coordinate: ");
+        int x = getIntInRangeFromUser(0, width);
+        Logger.getInstance().display("Type in Y coordinate: ");
+        int y = getIntInRangeFromUser(0, height);
+        System.out.println(x + " " + y);
+        return new Point(x, y);
+    }
 }
