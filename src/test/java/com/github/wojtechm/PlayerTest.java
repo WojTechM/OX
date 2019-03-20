@@ -24,6 +24,5 @@ public class PlayerTest {
         Score score = new Score(0);
         Player player = new Player(field, score);
         assert player.mark == field;
-        assert player.score == score;
     }
 }

@@ -6,10 +6,14 @@ package com.github.wojtechm;
 class Player {
 
     final Field mark;
-    final Score score;
+    private final Score score;
 
     Player(Field mark, Score score) {
         this.mark = mark;
         this.score = score;
+    }
+
+    void addPoints(int points) {
+        score.increasePoints(points);
     }
 }
