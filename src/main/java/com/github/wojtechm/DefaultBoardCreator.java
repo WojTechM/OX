@@ -3,17 +3,13 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public class ConsoleBoardCreator implements BoardCreator {
-
-    private ConsoleInputAcquirer inputAcquirer;
+public class DefaultBoardCreator implements BoardCreator {
 
     @Override
     public Board createBoard() {
-        Field[][] fields = new Field[][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-        };
+        int width = Integer.parseInt(Settings.getInstance().getGameParameter("boardWidth"));
+        int height = Integer.parseInt(Settings.getInstance().getGameParameter("boardHeight"));
+        Field[][] fields = new Field[width][height];
         return new Board(fields);
     }
 }
