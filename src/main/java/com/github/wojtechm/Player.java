@@ -5,15 +5,27 @@ package com.github.wojtechm;
  */
 class Player {
 
+    private final String name;
     final Field mark;
     private final Score score;
 
     Player(Field mark, Score score) {
         this.mark = mark;
         this.score = score;
+        this.name = "default";
+    }
+
+    Player(Field mark, Score score, String name) {
+        this.mark = mark;
+        this.score = score;
+        this.name = name;
     }
 
     void addPoints(int points) {
         score.increasePoints(points);
+    }
+
+    String getName() {
+        return name;
     }
 }

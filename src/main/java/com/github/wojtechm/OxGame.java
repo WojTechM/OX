@@ -3,8 +3,15 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public abstract class OxGame {
+abstract class OxGame {
 
-    private SettingsUpdate settingsUpdate;
-    private GameController gameController;
+    SettingsUpdate settingsUpdate;
+    GameController gameController;
+
+    OxGame(SettingsUpdate settingsUpdate, GameController gameController) {
+        this.settingsUpdate = settingsUpdate;
+        this.gameController = gameController;
+    }
+
+    abstract void run();
 }
