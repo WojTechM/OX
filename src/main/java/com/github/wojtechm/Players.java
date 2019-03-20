@@ -31,4 +31,8 @@ class Players {
         }
         currentPlayerIndex = index;
     }
+
+    void givePoints(int n) {
+        players.forEach(player -> player.addPoints(n));
+    }
 }
