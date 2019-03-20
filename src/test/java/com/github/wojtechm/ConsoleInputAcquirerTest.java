@@ -56,7 +56,7 @@ public class ConsoleInputAcquirerTest {
         }
 
         for (int n = 0; n < random.nextInt(6) + 1; n++) {
-            stringBuilder.append(random.nextInt(200) + max);
+            stringBuilder.append(random.nextInt(200) + 1 + max);
             stringBuilder.append("\n");
         }
 
@@ -83,7 +83,7 @@ public class ConsoleInputAcquirerTest {
         }
 
         for (int n = 0; n < random.nextInt(6) + 1; n++) {
-            stringBuilder.append(random.nextInt(200) + max);
+            stringBuilder.append(random.nextInt(200) + max + 1);
             stringBuilder.append("\n");
         }
 
