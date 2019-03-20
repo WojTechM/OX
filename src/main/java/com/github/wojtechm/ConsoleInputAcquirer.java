@@ -24,7 +24,7 @@ class ConsoleInputAcquirer {
     }
 
     int getIntInRangeFromUser(int from, int to) {
-        int input = from -1;
+        int input = from - 1;
         while (input < from || input > to) {
             input = getIntFromUser();
         }
@@ -36,11 +36,17 @@ class ConsoleInputAcquirer {
     }
 
     Point getPointInRange(int width, int height) {
-        Logger.getInstance().display("Type in X coordinate: ");
-        int x = getIntInRangeFromUser(0, width);
-        Logger.getInstance().display("Type in Y coordinate: ");
-        int y = getIntInRangeFromUser(0, height);
-        System.out.println(x + " " + y);
+        String coordinateMessage = Settings.getInstance().getMessage("askForCoordinate");
+        String rangeMessage = Settings.getInstance().getMessage("requireNumberInRange");
+
+        Logger.getInstance().display(String.format(coordinateMessage, "X"));
+        Logger.getInstance().display(String.format(rangeMessage, 0, width - 1));
+        int x = getIntInRangeFromUser(0, width - 1);
+
+        Logger.getInstance().display(String.format(coordinateMessage, "Y"));
+        Logger.getInstance().display(String.format(rangeMessage, 0, height - 1));
+        int y = getIntInRangeFromUser(0, height - 1);
+
         return new Point(x, y);
     }
 }
