@@ -3,11 +3,11 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public class ConsoleGameController extends GameController {
+class ConsoleGameController extends GameController {
 
     private ConsoleInputAcquirer inputAcquirer;
 
-    public ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer) {
+    ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer) {
         super(playerCreator, boardCreator);
         this.inputAcquirer = inputAcquirer;
     }
@@ -31,7 +31,11 @@ public class ConsoleGameController extends GameController {
                 } catch (IllegalMoveException e) {
                     continue; // Same player goes again
                 } catch (GameHasEndedException e) {
-                    e.getCurrentPlayer().score.increasePoints(1);
+                    if (e.getCurrentPlayer() != null) {
+                        e.getCurrentPlayer().addPoints(3);
+                    } else {
+                        players.givePoints(1);
+                    }
                     break;
                 }
                 game.nextTurn();

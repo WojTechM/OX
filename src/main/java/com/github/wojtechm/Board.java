@@ -6,24 +6,24 @@ import java.util.Arrays;
  * @author Makiela Wojciech
  */
 class Board {
-
     private Field[][] fields;
+
+    private int placedMarks = 0;
 
     Board(Field[][] fields) {
         this.fields = fields;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Board board = (Board) o;
-        return Arrays.equals(fields, board.fields);
+    int getHeight() {
+        return fields[0].length;
     }
 
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(fields);
+    int getWidth() {
+        return fields.length;
+    }
+
+    int getPlacedMarks() {
+        return placedMarks;
     }
 
     Field getMarkAtPoint(Point point) {
@@ -38,6 +38,20 @@ class Board {
             throw new IllegalMoveException();
         }
         fields[point.x][point.y] = mark;
+        placedMarks++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return Arrays.equals(fields, board.fields);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(fields);
     }
 
     @Override
@@ -59,13 +73,5 @@ class Board {
             builder.append("\n");
         }
         return builder.toString();
-    }
-
-    int getWidth() {
-        return fields.length;
-    }
-
-    int getHeight() {
-        return fields[0].length;
     }
 }
