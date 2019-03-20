@@ -23,7 +23,33 @@ class GameParameters {
                 return String.valueOf(numberOfRounds);
             case "translation":
                 return String.valueOf(translation);
+            default:
+                throw new IllegalArgumentException("Game parameters do not have variable: " + parameter);
         }
-        throw new IllegalArgumentException("Game parameters do not have variable: " + parameter);
+    }
+
+    void set(String parameter, String value) {
+        switch (parameter) {
+            case "boardWidth":
+                boardWidth = Integer.parseInt(value);
+                break;
+            case "boardHeight":
+                boardHeight = Integer.parseInt(value);
+                break;
+
+            case "inlineMatches":
+                inlineMatches = Integer.parseInt(value);
+                break;
+
+            case "numberOfRounds":
+                numberOfRounds = Integer.parseInt(value);
+                break;
+
+            case "translation":
+                this.translation = value;
+                break;
+            default:
+                throw new IllegalArgumentException("Game parameters do not have variable: " + parameter);
+        }
     }
 }
