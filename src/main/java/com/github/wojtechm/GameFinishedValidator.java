@@ -16,27 +16,16 @@ class GameFinishedValidator {
     boolean isMoveWinning(Board board, Move move) {
         int requiredInLine = Integer.parseInt(Settings.getInstance().getGameParameter("inlineMatches"));
 
-        int top = getNumberOfMatchingFieldsInDirection(board, Direction.TOP, move);
-        int down = getNumberOfMatchingFieldsInDirection(board, Direction.DOWN, move);
-        if (top + down + 1 >= requiredInLine) {
-            return true;
-        }
+        return isWinningInLine(Direction.TOP, Direction.DOWN, board, move, requiredInLine) ||
+                isWinningInLine(Direction.LEFT, Direction.RIGHT, board, move, requiredInLine) ||
+                isWinningInLine(Direction.TOP_LEFT, Direction.DOWN_RIGHT, board, move, requiredInLine) ||
+                isWinningInLine(Direction.TOP_RIGHT, Direction.DOWN_LEFT, board, move, requiredInLine);
+    }
 
-        int left = getNumberOfMatchingFieldsInDirection(board, Direction.LEFT, move);
-        int right = getNumberOfMatchingFieldsInDirection(board, Direction.RIGHT, move);
-        if (left + right + 1 >= requiredInLine) {
-            return true;
-        }
-
-        int topLeft = getNumberOfMatchingFieldsInDirection(board, Direction.TOP_LEFT, move);
-        int downRight = getNumberOfMatchingFieldsInDirection(board, Direction.DOWN_RIGHT, move);
-        if (topLeft + downRight + 1 >= requiredInLine) {
-            return true;
-        }
-
-        int topRight = getNumberOfMatchingFieldsInDirection(board, Direction.TOP_RIGHT, move);
-        int downLeft = getNumberOfMatchingFieldsInDirection(board, Direction.DOWN_LEFT, move);
-        return topRight + downLeft + 1 >= requiredInLine;
+    private boolean isWinningInLine(Direction d1, Direction d2, Board board, Move move, int requiredInLine) {
+        int i1 = getNumberOfMatchingFieldsInDirection(board, d1, move);
+        int i2 = getNumberOfMatchingFieldsInDirection(board, d2, move);
+        return i1 + i2 + 1 >= requiredInLine;
     }
 
     private int getNumberOfMatchingFieldsInDirection(Board board, Direction direction, Move move) {
