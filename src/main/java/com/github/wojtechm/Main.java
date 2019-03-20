@@ -9,11 +9,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ConsoleGameController consoleGameController = new ConsoleGameController(
-                new ConsolePlayerCreator(),
-                new ConsoleBoardCreator(),
-                new ConsoleInputAcquirer(new Scanner(System.in)));
+        ConsoleInputAcquirer acquirer = new ConsoleInputAcquirer(new Scanner(System.in));
 
-        consoleGameController.play();
+        Settings.getInstance().setTranslation(new TranslationLoader().loadTranslation("polski"));
+
+        OxGame oxGame = new ConsoleOxGame(
+                new ConsoleSettingsUpdate(
+                        new TranslationLoader()
+                ),
+                new ConsoleGameController(
+                        new ConsolePlayerCreator(acquirer),
+                        new DefaultBoardCreator(),
+                        acquirer),
+                acquirer);
+        oxGame.run();
+
     }
 }
