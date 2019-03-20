@@ -3,8 +3,15 @@ package com.github.wojtechm;
 /**
  * @author Makiela Wojciech
  */
-public abstract class GameController {
+abstract class GameController {
 
-    private PlayerCreator playerCreator;
-    private BoardCreator boardCreator;
+    PlayerCreator playerCreator;
+    BoardCreator boardCreator;
+
+    GameController(PlayerCreator playerCreator, BoardCreator boardCreator) {
+        this.playerCreator = playerCreator;
+        this.boardCreator = boardCreator;
+    }
+
+    abstract void play();
 }
