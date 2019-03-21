@@ -32,7 +32,26 @@ class Players {
         currentPlayerIndex = index;
     }
 
+    void setPlayerAsCurrent(String symbol) {
+        for (int index = 0; index < players.size(); index++) {
+            if (players.get(index).mark.toString().equals(symbol)) {
+                currentPlayerIndex = index;
+            }
+        }
+    }
     void givePoints(int n) {
         players.forEach(player -> player.addPoints(n));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (Player p : players) {
+            builder.append(p.mark);
+            builder.append(":");
+            builder.append(p.points());
+            builder.append("  ");
+        }
+        return builder.toString();
     }
 }
