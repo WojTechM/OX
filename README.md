@@ -14,3 +14,5 @@ Important note: you might need to use "chmod +x" on ".sh" files in order to use 
 ./compileAndRunWithTests.sh
 #### Without Tests:
 ./compileAndRun.sh
+#### Predefined Match:
+./compileAndRunPredefinedGame.sh playDefaultP1Wins (you may use other test files)
