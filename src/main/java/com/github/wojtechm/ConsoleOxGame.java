@@ -1,5 +1,6 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.logger.Logger;
 import com.github.wojtechm.settings.Settings;
 import com.github.wojtechm.settings.SettingsUpdate;
 

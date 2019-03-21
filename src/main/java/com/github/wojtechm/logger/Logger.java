@@ -1,13 +1,15 @@
-package com.github.wojtechm;
+package com.github.wojtechm.logger;
 
 /**
+ * Default Output path used by OxGame
+ *
  * @author Makiela Wojciech
  */
-abstract class Logger {
+public abstract class Logger {
 
     private static Logger instance = null;
 
-    static Logger getInstance() {
+    public static Logger getInstance() {
         if (instance == null) {
             instance = new Logger() {
                 @Override
@@ -19,5 +21,5 @@ abstract class Logger {
         return instance;
     }
 
-    abstract void display(String string);
+    public abstract void display(String string);
 }

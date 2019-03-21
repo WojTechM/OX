@@ -1,6 +1,8 @@
 package com.github.wojtechm.settings;
 
 /**
+ * OXGame settings. Container for Translation and GameParameters.
+ *
  * @author Makiela Wojciech
  */
 public class Settings {
