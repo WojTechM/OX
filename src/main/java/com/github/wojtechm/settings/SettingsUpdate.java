@@ -7,7 +7,7 @@ public abstract class SettingsUpdate {
 
     TranslationLoader translationLoader;
 
-    public SettingsUpdate(TranslationLoader translationLoader) {
+    SettingsUpdate(TranslationLoader translationLoader) {
         this.translationLoader = translationLoader;
     }
 

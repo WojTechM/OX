@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * @author Makiela Wojciech
  */
-class Score implements Comparable<Score>{
+class Score implements Comparable<Score> {
 
     final int points;
 

@@ -33,7 +33,7 @@ class Game {
         Logger.getInstance().display(board.toString());
     }
 
-    Player getActivePlayer() {
+    private Player getActivePlayer() {
         return players.getCurrentPlayer();
     }
 

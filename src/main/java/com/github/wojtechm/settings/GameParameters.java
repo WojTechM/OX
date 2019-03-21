@@ -3,7 +3,7 @@ package com.github.wojtechm.settings;
 /**
  * @author Makiela Wojciech
  */
-public class GameParameters {
+class GameParameters {
 
     private int boardWidth = 3;
     private int boardHeight = 3;
@@ -11,7 +11,7 @@ public class GameParameters {
     private int numberOfRounds = 3;
     private String translation = "polski";
 
-    public String get(String parameter) {
+    String get(String parameter) {
         switch (parameter) {
             case "boardWidth":
                 return String.valueOf(boardWidth);
@@ -28,7 +28,7 @@ public class GameParameters {
         }
     }
 
-    public void set(String parameter, String value) {
+    void set(String parameter, String value) {
         switch (parameter) {
             case "boardWidth":
                 boardWidth = Integer.parseInt(value);
