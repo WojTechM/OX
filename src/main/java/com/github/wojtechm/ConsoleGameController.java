@@ -9,7 +9,7 @@ import com.github.wojtechm.settings.Settings;
 class ConsoleGameController extends GameController {
 
     private ConsoleInputAcquirer inputAcquirer;
-    private  Players players = null;
+    private Players players = null;
 
     ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer, Players players) {
         super(playerCreator, boardCreator);
@@ -35,6 +35,7 @@ class ConsoleGameController extends GameController {
             Game game = new Game(board, players, new GameFinishedValidator());
             Logger.getInstance().display(String.format(Settings.getInstance().getMessage("nextMatch"), players.getCurrentPlayer().getName()));
             playMatch(board, game);
+            players.nextTurn();
         }
 
         String message = Settings.getInstance().getMessage("endGame");
@@ -52,6 +53,8 @@ class ConsoleGameController extends GameController {
 
     private void playMatch(Board board, Game game) throws GameInterruptedByUserException {
         while (true) {
+            Player currentPlayer = players.getCurrentPlayer();
+            Logger.getInstance().display(String.format(Settings.getInstance().getMessage("currentPlayerIs"), currentPlayer.getName()));
             Point point = inputAcquirer.getPointInRange(board.getWidth(), board.getHeight());
             Move move = new Move(players.getCurrentPlayer().mark, point);
             try {

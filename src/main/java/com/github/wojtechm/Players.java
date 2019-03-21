@@ -10,6 +10,7 @@ class Players {
 
     private List<Player> players;
     private int currentPlayerIndex = 0;
+    private int firstPlayerOnNextTurn = 0;
 
     Players(Player... players) {
         this.players = Arrays.asList(players);
@@ -30,15 +31,18 @@ class Players {
             throw new IllegalArgumentException("Passed player is not part of this game.");
         }
         currentPlayerIndex = index;
+        firstPlayerOnNextTurn = (index + 1) % players.size();
     }
 
     void setPlayerAsCurrent(String symbol) {
         for (int index = 0; index < players.size(); index++) {
             if (players.get(index).mark.toString().equals(symbol)) {
                 currentPlayerIndex = index;
+                firstPlayerOnNextTurn = (index + 1) % players.size();
             }
         }
     }
+
     void givePoints(int n) {
         players.forEach(player -> player.addPoints(n));
     }
@@ -53,5 +57,10 @@ class Players {
             builder.append("  ");
         }
         return builder.toString();
+    }
+
+    void nextTurn() {
+        currentPlayerIndex = firstPlayerOnNextTurn;
+        firstPlayerOnNextTurn = (firstPlayerOnNextTurn + 1) % players.size();
     }
 }
