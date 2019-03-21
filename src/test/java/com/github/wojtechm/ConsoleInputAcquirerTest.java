@@ -21,7 +21,7 @@ public class ConsoleInputAcquirerTest {
     }
 
     @Test(invocationCount = 10)
-    private void Should_ReturnInt_When_CalledAskUserForAnInteger() {
+    private void Should_ReturnInt_When_CalledAskUserForAnInteger() throws GameInterruptedByUserException {
         StringBuilder stringBuilder = new StringBuilder();
         String letters = "qwertyuiopasdfghjklzxcvbnm";
         for (int n = 0; n < random.nextInt(6) + 1; n++) {
@@ -45,7 +45,7 @@ public class ConsoleInputAcquirerTest {
     }
 
     @Test(invocationCount = 10)
-    private void Should_ReturnIntFromGivenRange_When_CalledGetIntInRangeFromUser() {
+    private void Should_ReturnIntFromGivenRange_When_CalledGetIntInRangeFromUser() throws GameInterruptedByUserException {
         StringBuilder stringBuilder = new StringBuilder();
         int min = random.nextInt(100);
         int max = min + 1 + random.nextInt(100);
@@ -72,7 +72,7 @@ public class ConsoleInputAcquirerTest {
     }
 
     @Test(invocationCount = 10)
-    private void Should_ReturnString_When_CalledGetIntInRangeFromUser() {
+    private void Should_ReturnString_When_CalledGetIntInRangeFromUser() throws GameInterruptedByUserException {
         StringBuilder stringBuilder = new StringBuilder();
         int min = random.nextInt(100);
         int max = min + 1 + random.nextInt(100);
