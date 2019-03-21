@@ -15,11 +15,11 @@ class Game {
         this.validator = validator;
     }
 
-    void update(Move move) throws IllegalMoveException, GameHasEndedException {
+    void make(Move move) throws IllegalMoveException, GameHasEndedException {
 
         Field field = board.getMarkAtPoint(move.getPosition());
         if (field != null) {
-            throw new IllegalMoveException();
+            throw new IllegalMoveException("Repeated move?");
         }
         board.markPoint(move.getPosition(), move.getMark());
         if (validator.isMoveWinning(board, move)) {

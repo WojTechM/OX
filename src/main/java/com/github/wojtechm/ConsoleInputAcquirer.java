@@ -16,14 +16,21 @@ class ConsoleInputAcquirer {
         this.scanner = scanner;
     }
 
-    int getIntFromUser() {
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-        }
-        return scanner.nextInt();
+    int getIntFromUser() throws GameInterruptedByUserException {
+        do {
+            try {
+                String input = scanner.nextLine();
+                if (input.equals("!quit")) {
+                    throw new GameInterruptedByUserException();
+                }
+                return Integer.parseInt(input);
+            } catch (NumberFormatException ignored) {
+
+            }
+        } while (true);
     }
 
-    int getIntInRangeFromUser(int from, int to) {
+    int getIntInRangeFromUser(int from, int to) throws GameInterruptedByUserException {
         int input = from - 1;
         while (input < from || input > to) {
             input = getIntFromUser();
@@ -31,11 +38,15 @@ class ConsoleInputAcquirer {
         return input;
     }
 
-    String getStringFromUser() {
-        return scanner.next();
+    String getStringFromUser() throws GameInterruptedByUserException {
+        String input = scanner.nextLine();
+        if (input.equals("!quit")) {
+            throw new GameInterruptedByUserException();
+        }
+        return input;
     }
 
-    Point getPointInRange(int width, int height) {
+    Point getPointInRange(int width, int height) throws GameInterruptedByUserException {
         String coordinateMessage = Settings.getInstance().getMessage("askForCoordinate");
         String rangeMessage = Settings.getInstance().getMessage("requireNumberInRange");
 

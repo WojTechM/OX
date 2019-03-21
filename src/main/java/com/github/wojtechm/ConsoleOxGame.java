@@ -16,26 +16,30 @@ class ConsoleOxGame extends OxGame {
     void run() {
         boolean quit = false;
         while (!quit) {
-            Logger.getInstance().display(Settings.getInstance().getMessage("mainMenu"));
-            int input = inputAcquirer.getIntInRangeFromUser(1, 3);
-            switch (input) {
-                case 1:
-                    gameController.play();
-                    break;
-                case 2:
-                    askForSettingsUpdate();
-                    break;
-                case 3:
-                    quit = true;
-                    Logger.getInstance().display(Settings.getInstance().getMessage("goodbye"));
-                    break;
-                default:
-                    Logger.getInstance().display(Settings.getInstance().getMessage("invalidInput"));
+            try {
+                Logger.getInstance().display(Settings.getInstance().getMessage("mainMenu"));
+                int input = inputAcquirer.getIntInRangeFromUser(1, 3);
+                switch (input) {
+                    case 1:
+                        gameController.play();
+                        break;
+                    case 2:
+                        askForSettingsUpdate();
+                        break;
+                    case 3:
+                        quit = true;
+                        Logger.getInstance().display(Settings.getInstance().getMessage("goodbye"));
+                        break;
+                    default:
+                        Logger.getInstance().display(Settings.getInstance().getMessage("invalidInput"));
+                }
+            } catch (GameInterruptedByUserException e) {
+                quit = true;
             }
         }
     }
 
-    private void askForSettingsUpdate() {
+    private void askForSettingsUpdate() throws GameInterruptedByUserException {
         Logger.getInstance().display(Settings.getInstance().getMessage("updateMenu"));
         String message = Settings.getInstance().getMessage("optionsDisplay");
         String[] currentSettings = Settings.getInstance().gameParameters();

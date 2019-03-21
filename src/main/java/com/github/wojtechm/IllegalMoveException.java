@@ -5,6 +5,7 @@ package com.github.wojtechm;
  */
 class IllegalMoveException extends OXGameException {
 
-    IllegalMoveException() {
+    IllegalMoveException(String message) {
+        super(message);
     }
 }

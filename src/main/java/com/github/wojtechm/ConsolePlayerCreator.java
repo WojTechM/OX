@@ -12,7 +12,7 @@ class ConsolePlayerCreator implements PlayerCreator {
     }
 
     @Override
-    public Players createPlayers() {
+    public Players createPlayers() throws GameInterruptedByUserException {
         Logger.getInstance().display(String.format(Settings.getInstance().getMessage("askForPlayerName"), "O"));
         String name1 = inputAcquirer.getStringFromUser();
         Logger.getInstance().display(String.format(Settings.getInstance().getMessage("askForPlayerName"), "X"));

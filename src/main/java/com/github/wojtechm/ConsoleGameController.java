@@ -13,7 +13,7 @@ class ConsoleGameController extends GameController {
     }
 
     @Override
-    void play() {
+    void play() throws GameInterruptedByUserException {
 
         Players players = playerCreator.createPlayers();
         int turns = 3;
@@ -23,13 +23,15 @@ class ConsoleGameController extends GameController {
             Board board = boardCreator.createBoard();
             Game game = new Game(board, players, new GameFinishedValidator());
             Logger.getInstance().display(String.format(Settings.getInstance().getMessage("nextMatch"), players.getCurrentPlayer().getName()));
+
             while (true) {
                 Point point = inputAcquirer.getPointInRange(board.getWidth(), board.getHeight());
                 Move move = new Move(players.getCurrentPlayer().mark, point);
                 try {
-                    game.update(move);
+                    game.make(move);
                 } catch (IllegalMoveException e) {
-                    continue; // Same player goes again
+                    Logger.getInstance().display("Wrong move, same player goes again"); // TODO
+                    continue;
                 } catch (GameHasEndedException e) {
                     if (e.getCurrentPlayer() != null) {
                         e.getCurrentPlayer().addPoints(3);

@@ -35,7 +35,7 @@ class Board {
 
     void markPoint(Point point, Field mark) throws IllegalMoveException {
         if (point.x < 0 || point.x >= getWidth() || point.y < 0 || point.y >= getHeight()) {
-            throw new IllegalMoveException();
+            throw new IllegalMoveException("Outside of the board, please correct");
         }
         fields[point.x][point.y] = mark;
         placedMarks++;

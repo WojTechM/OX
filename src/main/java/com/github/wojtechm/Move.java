@@ -13,6 +13,10 @@ class Move {
         this.position = position;
     }
 
+    Move(String sign, int x, int y) {
+        this(new Field<>(sign), new Point(x, y));
+    }
+
     Field getMark() {
         return mark;
     }

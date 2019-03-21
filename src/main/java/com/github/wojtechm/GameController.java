@@ -13,5 +13,5 @@ abstract class GameController {
         this.boardCreator = boardCreator;
     }
 
-    abstract void play();
+    abstract void play() throws GameInterruptedByUserException;
 }
