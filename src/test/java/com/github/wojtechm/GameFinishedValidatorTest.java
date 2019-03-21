@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class GameFinishedValidatorTest {
 
     @Test
-    public void should_returnTrue_When_moveIsWinning() {
+    void should_returnTrue_When_moveIsWinning() {
         // arrange
         Field<String> x = new Field<>("x");
         Field[][] fields = new Field[][]{

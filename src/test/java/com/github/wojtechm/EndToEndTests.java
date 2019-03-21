@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class EndToEndTests {
 
     @Test
-    public void should_endWithDraw_When_quitBeforeEndOfFirstGame() {
+    void should_endWithDraw_When_quitBeforeEndOfFirstGame() {
         // arrange
         SettingsUpdate settingsUpdate = new DefaultSettingsUpdate(null);
         settingsUpdate.updateGameParameter("boardWidth", "100");
@@ -45,7 +45,7 @@ public class EndToEndTests {
 
 
     @Test
-    public void should_endWithPlayer1Winning3to0_When_Player1WinsMatch() {
+    void should_endWithPlayer1Winning3to0_When_Player1WinsMatch() {
         // arrange
         SettingsUpdate settingsUpdate = new DefaultSettingsUpdate(null);
         settingsUpdate.updateGameParameter("boardWidth", "10");
@@ -84,7 +84,7 @@ public class EndToEndTests {
     }
 
     @Test
-    public void should_endWithScoreResult0To0_When_draw() {
+    void should_endWithScoreResult0To0_When_draw() {
         // arrange
         SettingsUpdate settingsUpdate = new DefaultSettingsUpdate(null);
         settingsUpdate.updateGameParameter("boardWidth", "3");

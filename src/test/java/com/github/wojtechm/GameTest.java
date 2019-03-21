@@ -15,7 +15,7 @@ public class GameTest {
     private final GameFinishedValidator validator = new GameFinishedValidator();
 
     @Test
-    public void should_change_When_moveHappened() throws IllegalMoveException, GameHasEndedException {
+    void should_change_When_moveHappened() throws IllegalMoveException, GameHasEndedException {
         // arrange
         Board board1 = new Board(new Field[][]{{null, null}});
         Board board2 = new Board(new Field[][]{{null, null}});
@@ -35,7 +35,7 @@ public class GameTest {
     }
 
     @Test(expectedExceptions = IllegalMoveException.class, expectedExceptionsMessageRegExp = "Repeated move\\?", dataProvider = "repeatedMovesData")
-    public void should_throwIllegalMoveException_When_placedMarkOnSamePositionTwice(Move move) throws IllegalMoveException, GameHasEndedException {
+    void should_throwIllegalMoveException_When_placedMarkOnSamePositionTwice(Move move) throws IllegalMoveException, GameHasEndedException {
         // arrange
         Board board = new Board(new Field[25][25]);
         Game game = new Game(board, null, validator);

@@ -19,7 +19,7 @@ public class DefaultBoardCreatorTest {
     }
 
     @Test(dataProvider = "boardSizeData")
-    public void should_returnBoardWithValidSize_When_changedSettings(int[] size) {
+    void should_returnBoardWithValidSize_When_changedSettings(int[] size) {
         // arrange
         int width = size[0];
         int height = size[1];
