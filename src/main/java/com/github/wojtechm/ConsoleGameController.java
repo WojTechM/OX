@@ -10,7 +10,7 @@ class ConsoleGameController extends GameController {
     private ConsoleInputAcquirer inputAcquirer;
     private  Players players = null;
 
-    public ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer, Players players) {
+    ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer, Players players) {
         super(playerCreator, boardCreator);
         this.inputAcquirer = inputAcquirer;
         this.players = players;
