@@ -32,7 +32,8 @@ class ConsoleGameController extends GameController {
                 try {
                     game.make(move);
                 } catch (IllegalMoveException e) {
-                    Logger.getInstance().display("Wrong move, same player goes again"); // TODO
+                    String message = Settings.getInstance().getMessage("invalidMove");
+                    Logger.getInstance().display(String.format(message, players.getCurrentPlayer().getName()));
                     continue;
                 } catch (GameHasEndedException e) {
                     if (e.getCurrentPlayer() != null) {

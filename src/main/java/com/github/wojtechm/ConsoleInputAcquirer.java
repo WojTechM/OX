@@ -22,7 +22,7 @@ class ConsoleInputAcquirer {
         do {
             try {
                 String input = scanner.nextLine();
-                if (input.equals("!quit")) {
+                if (input.equals(Settings.getInstance().getMessage("quit"))) {
                     throw new GameInterruptedByUserException();
                 }
                 return Integer.parseInt(input);

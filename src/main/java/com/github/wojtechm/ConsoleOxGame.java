@@ -31,7 +31,6 @@ class ConsoleOxGame extends OxGame {
                         break;
                     case 3:
                         quit = true;
-                        Logger.getInstance().display(Settings.getInstance().getMessage("goodbye"));
                         break;
                     default:
                         Logger.getInstance().display(Settings.getInstance().getMessage("invalidInput"));
@@ -40,6 +39,7 @@ class ConsoleOxGame extends OxGame {
                 quit = true;
             }
         }
+        Logger.getInstance().display(Settings.getInstance().getMessage("goodbye"));
     }
 
     private void askForSettingsUpdate() throws GameInterruptedByUserException {
