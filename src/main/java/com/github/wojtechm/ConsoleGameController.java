@@ -8,6 +8,13 @@ import com.github.wojtechm.settings.Settings;
 class ConsoleGameController extends GameController {
 
     private ConsoleInputAcquirer inputAcquirer;
+    private  Players players = null;
+
+    public ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer, Players players) {
+        super(playerCreator, boardCreator);
+        this.inputAcquirer = inputAcquirer;
+        this.players = players;
+    }
 
     ConsoleGameController(PlayerCreator playerCreator, BoardCreator boardCreator, ConsoleInputAcquirer inputAcquirer) {
         super(playerCreator, boardCreator);
@@ -17,8 +24,10 @@ class ConsoleGameController extends GameController {
     @Override
     void play() throws GameInterruptedByUserException {
 
-        Players players = playerCreator.createPlayers();
-        int turns = 3;
+        if (players == null) {
+            players = playerCreator.createPlayers();
+        }
+        int turns = Integer.valueOf(Settings.getInstance().getGameParameter("numberOfRounds"));
 
         while (turns > 0) {
             turns--;

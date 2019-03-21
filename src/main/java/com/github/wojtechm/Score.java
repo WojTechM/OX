@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 class Score implements Comparable<Score> {
 
-    final int points;
+    int points;
 
     Score(int points) {
         this.points = points;
@@ -39,6 +39,7 @@ class Score implements Comparable<Score> {
     }
 
     Score increasePoints(int increase) {
-        return new Score(points + increase);
+        points += increase;
+        return this;
     }
 }

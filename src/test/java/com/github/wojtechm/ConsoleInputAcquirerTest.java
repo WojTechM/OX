@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import java.util.Random;
 import java.util.Scanner;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertThrows;
 
 /**
  * @author Makiela Wojciech
