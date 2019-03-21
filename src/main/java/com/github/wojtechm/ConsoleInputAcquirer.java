@@ -51,13 +51,13 @@ class ConsoleInputAcquirer {
         String rangeMessage = Settings.getInstance().getMessage("requireNumberInRange");
 
         Logger.getInstance().display(String.format(coordinateMessage, "X"));
-        Logger.getInstance().display(String.format(rangeMessage, 0, width - 1));
-        int x = getIntInRangeFromUser(0, width - 1);
+        Logger.getInstance().display(String.format(rangeMessage, 1, width));
+        int x = getIntInRangeFromUser(1, width);
 
         Logger.getInstance().display(String.format(coordinateMessage, "Y"));
-        Logger.getInstance().display(String.format(rangeMessage, 0, height - 1));
-        int y = getIntInRangeFromUser(0, height - 1);
+        Logger.getInstance().display(String.format(rangeMessage, 1, height));
+        int y = getIntInRangeFromUser(1, height);
 
-        return new Point(x, y);
+        return new Point(x - 1, y - 1);
     }
 }
