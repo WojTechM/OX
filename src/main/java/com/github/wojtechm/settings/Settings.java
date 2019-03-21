@@ -1,6 +1,8 @@
 package com.github.wojtechm.settings;
 
 /**
+ * OXGame settings. Container for Translation and GameParameters.
+ *
  * @author Makiela Wojciech
  */
 public class Settings {
@@ -21,7 +23,7 @@ public class Settings {
 
     public static Settings getInstance() {
         if (instance == null) {
-            instance = new Settings(new Translation(null), new GameParameters());
+            instance = new Settings(new TranslationLoader().loadTranslation("polski"), new GameParameters());
         }
         return instance;
     }

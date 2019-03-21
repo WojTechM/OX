@@ -1,0 +1,63 @@
+1
+Player1
+Player2
+O
+p1
+1
+1
+p2
+1
+2
+p1
+2
+2
+p2
+3
+1
+p1
+3
+3
+Player1 Won!
+Player2 Goes:
+2
+1
+p1
+1
+1
+p2
+2
+1
+p2GoesAgain(duplicatedMove)
+1
+2
+p1
+2
+2
+p2
+3
+1
+p1
+3
+3
+Player1 Won!
+Player1 Goes:
+1
+1
+p2
+1
+3
+p1
+2
+2
+p2
+3
+1
+p1
+1
+1
+duplicatedMove. Player 1 goes again
+3
+3
+Player 1 won! -> Exit game
+3
+

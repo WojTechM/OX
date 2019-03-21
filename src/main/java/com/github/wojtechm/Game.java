@@ -1,5 +1,7 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.logger.Logger;
+
 /**
  * @author Makiela Wojciech
  */

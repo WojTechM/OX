@@ -28,4 +28,8 @@ class Player {
     String getName() {
         return name;
     }
+
+    int points() {
+        return score.points;
+    }
 }
