@@ -5,9 +5,9 @@ import java.util.MissingResourceException;
 /**
  * @author Makiela Wojciech
  */
-class ConsoleSettingsUpdate extends SettingsUpdate {
+class DefaultSettingsUpdate extends SettingsUpdate {
 
-    ConsoleSettingsUpdate(TranslationLoader translationLoader) {
+    DefaultSettingsUpdate(TranslationLoader translationLoader) {
         super(translationLoader);
     }
 

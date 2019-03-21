@@ -14,7 +14,7 @@ public class Main {
         Settings.getInstance().setTranslation(new TranslationLoader().loadTranslation("polski"));
 
         OxGame oxGame = new ConsoleOxGame(
-                new ConsoleSettingsUpdate(
+                new DefaultSettingsUpdate(
                         new TranslationLoader()
                 ),
                 new ConsoleGameController(
