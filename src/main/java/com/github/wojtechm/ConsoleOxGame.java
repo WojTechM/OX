@@ -51,26 +51,30 @@ class ConsoleOxGame extends OxGame {
                 String.format(message, currentSettings[0], currentSettings[1], currentSettings[2], currentSettings[3], currentSettings[4])
         );
 
+        int currInline = Integer.valueOf(Settings.getInstance().getGameParameter("inlineMatches"));
+        int currWidth = Integer.valueOf(Settings.getInstance().getGameParameter("boardWidth"));
+        int currHeight = Integer.valueOf(Settings.getInstance().getGameParameter("boardHeight"));
+
         int input = inputAcquirer.getIntInRangeFromUser(1, 5);
         switch (input) {
             case 1: // change boardWidth
                 message = Settings.getInstance().getMessage("requireNumberInRange");
-                Logger.getInstance().display(String.format(message, 3, 100));
-                int width = inputAcquirer.getIntInRangeFromUser(3, 100);
+                Logger.getInstance().display(String.format(message, currInline, 100));
+                int width = inputAcquirer.getIntInRangeFromUser(currInline, 100);
                 settingsUpdate.updateGameParameter("boardWidth", String.valueOf(width));
                 break;
 
             case 2: // change boardHeight
                 message = Settings.getInstance().getMessage("requireNumberInRange");
-                Logger.getInstance().display(String.format(message, 3, 100));
-                int height = inputAcquirer.getIntInRangeFromUser(3, 100);
+                Logger.getInstance().display(String.format(message, currInline, 100));
+                int height = inputAcquirer.getIntInRangeFromUser(currInline, 100);
                 settingsUpdate.updateGameParameter("boardHeight", String.valueOf(height));
                 break;
 
             case 3: // change inlineMatches
                 message = Settings.getInstance().getMessage("requireNumberInRange");
-                Logger.getInstance().display(String.format(message, 3, 100));
-                int inlineMatches = inputAcquirer.getIntInRangeFromUser(3, 100);
+                Logger.getInstance().display(String.format(message, 3, Math.min(currWidth, currHeight)));
+                int inlineMatches = inputAcquirer.getIntInRangeFromUser(3, Math.min(currWidth, currHeight));
                 settingsUpdate.updateGameParameter("inlineMatches", String.valueOf(inlineMatches));
                 break;
 
