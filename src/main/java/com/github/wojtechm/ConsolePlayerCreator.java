@@ -20,6 +20,6 @@ class ConsolePlayerCreator implements PlayerCreator {
         String name1 = inputAcquirer.getStringFromUser();
         Logger.getInstance().display(String.format(Settings.getInstance().getMessage("askForPlayerName"), "X"));
         String name2 = inputAcquirer.getStringFromUser();
-        return new Players(new Player(new Field<>('o'), new Score(0), name1), new Player(new Field<>('x'), new Score(0), name2));
+        return new Players(new Player(new Field<>('O'), new Score(0), name1), new Player(new Field<>('X'), new Score(0), name2));
     }
 }
