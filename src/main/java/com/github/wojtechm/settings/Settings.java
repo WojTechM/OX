@@ -1,9 +1,9 @@
-package com.github.wojtechm;
+package com.github.wojtechm.settings;
 
 /**
  * @author Makiela Wojciech
  */
-class Settings {
+public class Settings {
 
     private static Settings instance = null;
 
@@ -15,22 +15,22 @@ class Settings {
         this.parameters = parameters;
     }
 
-    void setTranslation(Translation translation) {
+    public void setTranslation(Translation translation) {
         this.translation = translation;
     }
 
-    static Settings getInstance() {
+    public static Settings getInstance() {
         if (instance == null) {
             instance = new Settings(new Translation(null), new GameParameters());
         }
         return instance;
     }
 
-    String getGameParameter(String parameter) {
+    public String getGameParameter(String parameter) {
         return parameters.get(parameter);
     }
 
-    String getMessage(String message) {
+    public String getMessage(String message) {
         return translation.getMessage(message);
     }
 
@@ -38,7 +38,7 @@ class Settings {
         this.parameters.set(parameter, newValue);
     }
 
-    String[] gameParameters() {
+    public String[] gameParameters() {
         String[] parameters = new String[5];
         parameters[0] = this.parameters.get("boardWidth");
         parameters[1] = this.parameters.get("boardHeight");

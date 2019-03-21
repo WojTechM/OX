@@ -1,5 +1,8 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.settings.Settings;
+import com.github.wojtechm.settings.SettingsUpdate;
+
 /**
  * @author Makiela Wojciech
  */

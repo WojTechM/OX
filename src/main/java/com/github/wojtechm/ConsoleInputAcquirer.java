@@ -1,5 +1,7 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.settings.Settings;
+
 import java.util.Scanner;
 
 /**

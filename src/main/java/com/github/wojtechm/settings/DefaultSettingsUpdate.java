@@ -1,18 +1,18 @@
-package com.github.wojtechm;
+package com.github.wojtechm.settings;
 
 import java.util.MissingResourceException;
 
 /**
  * @author Makiela Wojciech
  */
-class DefaultSettingsUpdate extends SettingsUpdate {
+public class DefaultSettingsUpdate extends SettingsUpdate {
 
-    DefaultSettingsUpdate(TranslationLoader translationLoader) {
+    public DefaultSettingsUpdate(TranslationLoader translationLoader) {
         super(translationLoader);
     }
 
     @Override
-    void loadTranslation(String requestedTranslation) {
+    public void loadTranslation(String requestedTranslation) {
         try {
             Translation translation = translationLoader.loadTranslation(requestedTranslation);
             Settings.getInstance().setTranslation(translation);
@@ -22,7 +22,7 @@ class DefaultSettingsUpdate extends SettingsUpdate {
     }
 
     @Override
-    boolean updateGameParameter(String parameter, String newValue) {
+    public boolean updateGameParameter(String parameter, String newValue) {
         try {
             Settings.getInstance().setGameParameter(parameter, newValue);
             return true;

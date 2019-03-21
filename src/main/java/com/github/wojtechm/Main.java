@@ -1,5 +1,9 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.settings.DefaultSettingsUpdate;
+import com.github.wojtechm.settings.Settings;
+import com.github.wojtechm.settings.TranslationLoader;
+
 import java.util.Scanner;
 
 /**
