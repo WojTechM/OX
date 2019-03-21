@@ -8,22 +8,22 @@
     <artifactId>OX</artifactId>
     <version>0.1</version>
     <name>OX</name>
-    <description>#DESC</description>
-    
-  
+    <description>Tic-Tac-Toe game</description>
+
+
     <properties>
-             <!-- https://maven.apache.org/general.html#encoding-warning -->
+        <!-- https://maven.apache.org/general.html#encoding-warning -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-             <!-- https://maven.apache.org/general.html#special-characters-site -->
+        <!-- https://maven.apache.org/general.html#special-characters-site -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.java.version>1.8</project.java.version>
         <maven.compiler.source>${project.java.version}</maven.compiler.source>
         <maven.compiler.target>${project.java.version}</maven.compiler.target>
-      <!-- see source for the plugins to verify if those can be skipped, they should IIRC -->
+        <!-- see source for the plugins to verify if those can be skipped, they should IIRC -->
         <maven.compiler.encoding>${project.build.sourceEncoding}</maven.compiler.encoding>
         <maven.resources.encoding>${project.build.sourceEncoding}</maven.resources.encoding>
         <version.maven>3.5.3</version.maven>
-      <!-- plugin versions should go here, so below they can be omitted -->
+        <!-- plugin versions should go here, so below they can be omitted -->
         <version.plugin.maven.enforcer>3.0.0-M2</version.plugin.maven.enforcer>
         <version.plugin.maven.jar>3.1.0</version.plugin.maven.jar>
         <version.plugin.maven.compiler>3.8.0</version.plugin.maven.compiler>
@@ -32,6 +32,17 @@
 
     <dependencies>
         <!-- #Your dependencies -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sskorol</groupId>
+            <artifactId>test-data-supplier</artifactId>
+            <version>1.7.0</version>
+        </dependency>
     </dependencies>
 
     <build>
