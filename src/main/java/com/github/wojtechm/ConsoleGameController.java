@@ -25,9 +25,8 @@ class ConsoleGameController extends GameController {
     @Override
     void play() throws GameInterruptedByUserException {
 
-        if (players == null) {
-            players = playerCreator.createPlayers();
-        }
+        initializePlayers();
+
         int turns = Integer.valueOf(Settings.getInstance().getGameParameter("numberOfRounds"));
 
         while (turns > 0) {
@@ -35,30 +34,45 @@ class ConsoleGameController extends GameController {
             Board board = boardCreator.createBoard();
             Game game = new Game(board, players, new GameFinishedValidator());
             Logger.getInstance().display(String.format(Settings.getInstance().getMessage("nextMatch"), players.getCurrentPlayer().getName()));
+            playMatch(board, game);
+        }
 
-            while (true) {
-                Point point = inputAcquirer.getPointInRange(board.getWidth(), board.getHeight());
-                Move move = new Move(players.getCurrentPlayer().mark, point);
-                try {
-                    game.make(move);
-                } catch (IllegalMoveException e) {
-                    String message = Settings.getInstance().getMessage("invalidMove");
-                    Logger.getInstance().display(String.format(message, players.getCurrentPlayer().getName()));
-                    continue;
-                } catch (GameHasEndedException e) {
-                    if (e.getCurrentPlayer() != null) {
-                        e.getCurrentPlayer().addPoints(3);
-                        Logger.getInstance().display(String.format(Settings.getInstance().getMessage("winningPlayer"), e.getCurrentPlayer().getName()));
-                    } else {
-                        players.givePoints(1);
-                        Logger.getInstance().display(Settings.getInstance().getMessage("drawMessage"));
-                    }
-                    game.nextTurn();
-                    break;
+        String message = Settings.getInstance().getMessage("endGame");
+        Logger.getInstance().display(String.format(message, players.toString()));
+    }
+
+    private void initializePlayers() throws GameInterruptedByUserException {
+        if (players == null) {
+            players = playerCreator.createPlayers();
+        }
+        Logger.getInstance().display(Settings.getInstance().getMessage("whoIsFirstPlayer"));
+        String goesFirst = inputAcquirer.getStringFromUser();
+        players.setPlayerAsCurrent(goesFirst);
+    }
+
+    private void playMatch(Board board, Game game) throws GameInterruptedByUserException {
+        while (true) {
+            Point point = inputAcquirer.getPointInRange(board.getWidth(), board.getHeight());
+            Move move = new Move(players.getCurrentPlayer().mark, point);
+            try {
+                game.make(move);
+            } catch (IllegalMoveException e) {
+                String message = Settings.getInstance().getMessage("invalidMove");
+                Logger.getInstance().display(String.format(message, players.getCurrentPlayer().getName()));
+                continue;
+            } catch (GameHasEndedException e) {
+                if (e.getCurrentPlayer() != null) {
+                    e.getCurrentPlayer().addPoints(3);
+                    Logger.getInstance().display(
+                            String.format(Settings.getInstance().getMessage("winningPlayer"), e.getCurrentPlayer().getName()));
+                } else {
+                    players.givePoints(1);
+                    Logger.getInstance().display(Settings.getInstance().getMessage("drawMessage"));
                 }
                 game.nextTurn();
+                break;
             }
-
+            game.nextTurn();
         }
     }
 }
