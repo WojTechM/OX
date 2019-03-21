@@ -86,6 +86,7 @@ class ConsoleOxGame extends OxGame {
                 Logger.getInstance().display(message);
                 String translation = inputAcquirer.getStringFromUser();
                 settingsUpdate.loadTranslation(translation);
+                settingsUpdate.updateGameParameter("translation", translation);
                 break;
 
             default:
