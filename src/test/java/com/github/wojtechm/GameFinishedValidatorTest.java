@@ -1,5 +1,7 @@
 package com.github.wojtechm;
 
+import com.github.wojtechm.settings.DefaultSettingsUpdate;
+import com.github.wojtechm.settings.SettingsUpdate;
 import org.testng.annotations.Test;
 
 /**
@@ -10,6 +12,11 @@ public class GameFinishedValidatorTest {
     @Test
     void should_returnTrue_When_moveIsWinning() {
         // arrange
+        SettingsUpdate settingsUpdate = new DefaultSettingsUpdate(null);
+        settingsUpdate.updateGameParameter("boardWidth", "3");
+        settingsUpdate.updateGameParameter("boardHeight", "3");
+        settingsUpdate.updateGameParameter("inlineMatches", "3");
+        settingsUpdate.updateGameParameter("numberOfRounds", "1");
         Field<String> x = new Field<>("x");
         Field[][] fields = new Field[][]{
                 {x, null, null},

@@ -12,7 +12,7 @@ public class BoardTest {
     private static Random random = new Random();
 
     @Test(invocationCount = 20)
-    private void Should_ReturnTrue_When_BoardsAreEquals_Otherwise_False() {
+    private void should_ReturnTrue_When_BoardsAreEquals_Otherwise_False() {
         Field[][] fields = getRandomBoardFields();
         Board board = new Board(fields);
         Board board2 = new Board(fields);
@@ -27,7 +27,7 @@ public class BoardTest {
     }
 
     @Test(invocationCount = 20)
-    private void Should_ReturnFieldObject_When_CalledGetMarkAtPoint() {
+    private void should_ReturnFieldObject_When_CalledGetMarkAtPoint() {
         Field[][] fields = getRandomBoardFields();
         int width = fields.length;
         int height = fields[0].length;
@@ -40,7 +40,7 @@ public class BoardTest {
     }
 
     @Test(invocationCount = 20)
-    private void Should_ChangeObjectInMatrix_When_CalledMarkPoint() throws IllegalMoveException {
+    private void should_ChangeObjectInMatrix_When_CalledMarkPoint() throws IllegalMoveException {
         Field[][] fields = getRandomBoardFields();
         int width = fields.length;
         int height = fields[0].length;
@@ -53,7 +53,7 @@ public class BoardTest {
     }
 
     @Test
-    private void Should_ReturnStringRepresentation_When_CalledToStringMethod() throws IllegalMoveException {
+    private void should_ReturnStringRepresentation_When_CalledToStringMethod() throws IllegalMoveException {
         Field[][] fields = new Field[3][3];
         Board board = new Board(fields);
         String actual = board.toString();

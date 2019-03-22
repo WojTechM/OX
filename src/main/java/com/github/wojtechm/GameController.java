@@ -4,6 +4,7 @@ package com.github.wojtechm;
  * @author Makiela Wojciech
  */
 abstract class GameController {
+    //TODO extend docs
 
     PlayerCreator playerCreator;
     BoardCreator boardCreator;

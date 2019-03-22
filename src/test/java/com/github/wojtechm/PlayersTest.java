@@ -9,10 +9,8 @@ import java.util.Random;
  */
 public class PlayersTest {
 
-    Random random = new Random();
-
     @Test
-    private void Should_ReturnActivePlayer_When_CalledGetCurrentPlayer() {
+    private void should_ReturnActivePlayer_When_CalledGetCurrentPlayer() {
         Player p1 = new Player(null, null);
         Player p2 = new Player(null, null);
         Players players = new Players(p1, p2);
@@ -21,7 +19,7 @@ public class PlayersTest {
 
 
     @Test
-    private void Should_SwichActivePlayer_When_CalledMoveToNextPlayer() {
+    private void should_SwichActivePlayer_When_CalledMoveToNextPlayer() {
         Player p1 = new Player(null, null);
         Player p2 = new Player(null, null);
         Players players = new Players(p1, p2);
@@ -31,7 +29,7 @@ public class PlayersTest {
 
 
     @Test
-    private void Should_SetActivePlayer_When_CalledSetPlayerAsCurrent() {
+    private void should_SetActivePlayer_When_CalledSetPlayerAsCurrent() {
         Player p1 = new Player(null, null);
         Player p2 = new Player(null, null);
         Players players = new Players(p1, p1, p1, p2, p1);
@@ -41,7 +39,7 @@ public class PlayersTest {
 
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    private void Should_ThrowException_When_TriedToSetNonexistentPlayerAsCurrent() {
+    private void should_ThrowException_When_TriedToSetNonexistentPlayerAsCurrent() {
         Player p1 = new Player(null, null);
         Player p2 = new Player(null, null);
         Players players = new Players(p1, p2);
@@ -50,7 +48,7 @@ public class PlayersTest {
     }
 
     @Test
-    private void Should_KeepLooping_When_UpdatingCurrentPlayerIndex() {
+    private void should_KeepLooping_When_UpdatingCurrentPlayerIndex() {
         Player p1 = new Player(null, null);
         Player p2 = new Player(null, null);
         Players players = new Players(p1, p2);

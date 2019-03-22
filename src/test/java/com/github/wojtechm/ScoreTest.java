@@ -12,7 +12,7 @@ import java.util.function.Predicate;
 public class ScoreTest {
 
     @Test
-    private void Should_CreateFieldWithGivenParameter() {
+    private void should_CreateFieldWithGivenParameter() {
         Score score = new Score(0);
         assert score.points == 0;
         score = new Score(7);
@@ -34,7 +34,7 @@ public class ScoreTest {
     }
 
     @Test(dataProvider = "dataForEqualsTest")
-    private void Should_ReturnCorrectBoolean_When_UsingEqualsMethod(Score score, Object object, boolean expected) {
+    private void should_ReturnCorrectBoolean_When_UsingEqualsMethod(Score score, Object object, boolean expected) {
         boolean actual = score.equals(object);
         assert expected == actual : String.format("Compared %s and %s. Expected %s, got %s", score, object, expected, actual);
     }
@@ -52,7 +52,7 @@ public class ScoreTest {
     }
 
     @Test(dataProvider = "dataForEqualsHashCodeTest")
-    private void Should_ReturnEqualHashCode_When_ScoresAreEqual(Score score, Score score2, boolean expected) {
+    private void should_ReturnEqualHashCode_When_ScoresAreEqual(Score score, Score score2, boolean expected) {
         boolean actual = score.hashCode() == score2.hashCode();
         assert expected == actual : String.format("Compared hashcodes of %s and %s. Expected %s, got %s", score, score2, expected, actual);
     }
@@ -81,7 +81,7 @@ public class ScoreTest {
     }
 
     @Test(dataProvider = "dataForCompareToTests")
-    private void Should_ReturnIntInAccordanceToCompareToApi_When_CalledCompareTo(Score score, Score score2, Predicate<Integer> predicate) {
+    private void should_ReturnIntInAccordanceToCompareToApi_When_CalledCompareTo(Score score, Score score2, Predicate<Integer> predicate) {
         boolean actual = predicate.test(score.compareTo(score2));
         assert actual : String.format("Compared Scores: %s and %s", score, score2);
     }
@@ -102,7 +102,7 @@ public class ScoreTest {
     }
 
     @Test(dataProvider = "dataForIncreasePointsTest")
-    private void Should_ReturnNewScoreObjectWithIncreasedValue_When_CalledIncreasePoints(Score score, int increase, Score expected) {
+    private void should_ReturnNewScoreObjectWithIncreasedValue_When_CalledIncreasePoints(Score score, int increase, Score expected) {
         Score actual = score.increasePoints(increase);
         assert expected.equals(actual) : String.format("Increased %s by %s. Expected %s, got %s", score, increase, expected, actual);
     }
