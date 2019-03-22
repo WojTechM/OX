@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 public class FieldTest {
 
     @Test
-    private void Should_CreateFieldWithGivenParameter() {
+    private void should_CreateFieldWithGivenParameter() {
         Character type1 = 'T';
         Field<Character> field1 = new Field<>(type1);
         assert type1 == field1.getRepresentation();
@@ -36,7 +36,7 @@ public class FieldTest {
 
 
     @Test(dataProvider = "equalsReturnTrueTestData")
-    private void Should_returnTrue_When_FieldsHaveSameContent(Field field, Field field2) {
+    private void should_returnTrue_When_FieldsHaveSameContent(Field field, Field field2) {
         assert field.equals(field2);
     }
 
@@ -56,7 +56,7 @@ public class FieldTest {
     }
 
     @Test(dataProvider = "equalsReturnFalseTestData")
-    private void Should_returnFalse_When_AreDifferentTypesOrFieldsHaveDifferentContent(Field field, Object object) {
+    private void should_returnFalse_When_AreDifferentTypesOrFieldsHaveDifferentContent(Field field, Object object) {
         assert !field.equals(object);
     }
 
@@ -72,7 +72,7 @@ public class FieldTest {
     }
 
     @Test(dataProvider = "fieldsAndToStringsData")
-    private void Should_stringRepresentation_When_calledToStringMethod(Field field, String expected) {
+    private void should_stringRepresentation_When_calledToStringMethod(Field field, String expected) {
         String actual = field.toString();
         assert expected.equals(actual) : String.format("ToString error: expected %s, got %s.", expected, actual);
     }

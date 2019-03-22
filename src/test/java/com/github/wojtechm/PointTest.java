@@ -35,14 +35,14 @@ public class PointTest {
     }
 
     @Test(dataProvider = "dataForPointEquals")
-    private void Should_returnTrue_When_PointsAreEquals_Otherwise_returnFalse(int x, int y, Point toCompare, boolean expected) {
+    private void should_returnTrue_When_PointsAreEquals_Otherwise_returnFalse(int x, int y, Point toCompare, boolean expected) {
         Point point = new Point(x, y);
         boolean actual = point.equals(toCompare);
         assert expected == actual : String.format("\nCompared points using equals: \nP1{%s} \nP2{%s} \nExpected %s, got %s", point, toCompare, expected, actual);
     }
 
     @Test
-    private void Should_StoreVariablesAsFinal() throws NoSuchFieldException {
+    private void should_StoreVariablesAsFinal() throws NoSuchFieldException {
         Field field1 = Point.class.getDeclaredField("x");
         Field field2 = Point.class.getDeclaredField("y");
         assert Modifier.isFinal(field1.getModifiers()) : "'x' variable in Point class should be declared final";

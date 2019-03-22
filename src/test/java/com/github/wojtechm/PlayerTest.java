@@ -11,7 +11,7 @@ import java.lang.reflect.Modifier;
 public class PlayerTest {
 
     @Test
-    private void Should_StoreVariablesAsFinal() throws NoSuchFieldException {
+    private void should_StoreVariablesAsFinal() throws NoSuchFieldException {
         Field field1 = Player.class.getDeclaredField("mark");
         Field field2 = Player.class.getDeclaredField("score");
         assert Modifier.isFinal(field1.getModifiers()) : "'mark' variable in Point class should be declared final";
@@ -19,7 +19,7 @@ public class PlayerTest {
     }
 
     @Test
-    private void Should_PersistSentData() {
+    private void should_PersistSentData() {
         com.github.wojtechm.Field<String> field = new com.github.wojtechm.Field<>("f");
         Score score = new Score(0);
         Player player = new Player(field, score);
